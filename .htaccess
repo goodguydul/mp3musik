@@ -1,0 +1,47 @@
+AddHandler cgi-script .an .pl
+
+RewriteEngine On
+RewriteBase /mp3musik/
+
+RewriteRule ^cgi/(.+)/(.+) has.an/server/00/$1/$2
+RewriteRule ^musik/(.+)/page/(.+).html$ music.php?q=$1&page=$2
+RewriteRule ^musik/mp3/(.+)/(.+).html$ view.php?id=$1&permalink=$2
+
+RewriteRule ^dl/(.+).mp3$ dl.php?id=$1
+
+RewriteRule ^video/(.+)/page/(.+).html$ video.php?q=$1&page=$2
+RewriteRule ^lagu/(.+)/page/(.+).html$ mp3s.php?q=$1&page=$2
+RewriteRule ^video/download/(.+).html$ downloadvideo.php?v=$1
+RewriteRule ^lagu/mp3/(.+).html$ downloadmp3.php?v=$1
+RewriteRule ^video/streaming/(.+).html$ stream.php?v=$1
+
+RewriteRule ^lagu/(.+).html$ mp3s.php?q=$1 [L]
+RewriteRule ^musik/(.+).html$ music.php?q=$1 [L]
+RewriteRule ^video/(.+).html$ video.php?q=$1 [L]
+
+RewriteRule ^link-(.+).html$ link.php?v=$1 [L]
+
+RewriteRule ^billboard$ billboard.php [L]
+RewriteRule ^chart/top-songs$ topsong.php [L]
+RewriteRule ^chart/chart-kpop$ genre.php?genre=kpop [L]
+RewriteRule ^chart/chart-jpop$ genre.php?genre=jpop [L]
+RewriteRule ^chart/lagu-dangdut$ dangdut.php [L]
+RewriteRule ^chart/lagu-daerah-nusantara$ daerah.php [L]
+RewriteRule ^chart/lagu-reggae$ reggae.php [L]
+RewriteRule ^chart/top-artist$ artist.php [L]
+RewriteRule ^chart/dj$ genre.php?genre=dj [L]
+RewriteRule ^chart/chart-anime$ genre.php?genre=anime [L]
+RewriteRule ^chart/groupband$ groupband.php [L]
+RewriteRule ^featured/youtube-rewind-indonesia-2016.html$ rewind.php [L]
+RewriteRule ^featured$ featured.php [L]
+RewriteRule ^tangga-lagu$ tanggalagu.php [L]
+RewriteRule ^video$ video.php [L]
+RewriteRule ^musik.html$ music.php [L]
+
+RewriteRule ^about.html$ about.php [L]
+RewriteRule ^disclaimer$ disclaimer.php [L]
+
+Options -Indexes
+ErrorDocument 402 /index.php
+ErrorDocument 403 /index.php
+ErrorDocument 404 /index.php
